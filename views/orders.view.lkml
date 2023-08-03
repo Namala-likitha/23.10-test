@@ -9,7 +9,7 @@ view: orders {
   }
   dimension_group: created {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, month, quarter, year,day_of_week_index,day_of_week]
     sql: ${TABLE}."CREATED_AT" ;;
   }
   dimension: order_amount {
@@ -33,13 +33,13 @@ view: orders {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	users.id,
-	users.name,
-	billion_orders.count,
-	hundred_million_orders.count,
-	order_items.count
-	]
+  id,
+  users.id,
+  users.name,
+  billion_orders.count,
+  hundred_million_orders.count,
+  order_items.count
+  ]
   }
 
 }
