@@ -1,5 +1,8 @@
-view: orders {
-  sql_table_name: "LOOKER_TEST"."ORDERS" ;;
+ include: "//snowflake_test_s/views/orders.view.lkml"
+
+view: orderse {
+  # sql_table_name: "LOOKER_TEST"."ORDERS" ;;
+  extends: [orders]
   drill_fields: [id]
 
   dimension: id {
