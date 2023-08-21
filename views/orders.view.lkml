@@ -10,6 +10,22 @@ view: orderse {
     type: number
     sql: ${TABLE}."ID" ;;
   }
+
+
+  filter: date_filter {
+
+    type: date
+    sql: ${created_raw} < COALESCE({% date_end date_filter %}, now())
+      AND (${created_raw} >= {% date_start date_filter %} OR ${created_raw} is NULL OR {% date_start date_filter %} IS NULL)
+      ;;
+  }
+
+  dimension: reporting_period_start_date {
+    type: date
+    sql: {% date_start date_filter %} ;;
+  }
+
+
   dimension_group: created {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year,day_of_week_index,day_of_week]

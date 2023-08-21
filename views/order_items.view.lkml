@@ -7,6 +7,11 @@ view: order_items {
     type: number
     sql: ${TABLE}."ID" ;;
   }
+
+
+
+
+
   dimension: amount {
     type: number
     sql: ${TABLE}."AMOUNT" ;;
