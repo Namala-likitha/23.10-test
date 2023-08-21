@@ -12,6 +12,13 @@ view: orderse {
   }
 
 
+
+  dimension_group: created {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year,day_of_week_index,day_of_week]
+    sql: ${TABLE}."CREATED_AT" ;;
+  }
+
   filter: date_filter {
 
     type: date
@@ -25,12 +32,6 @@ view: orderse {
     sql: {% date_start date_filter %} ;;
   }
 
-
-  dimension_group: created {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year,day_of_week_index,day_of_week]
-    sql: ${TABLE}."CREATED_AT" ;;
-  }
   dimension: order_amount {
     type: number
     sql: ${TABLE}."ORDER_AMOUNT" ;;
